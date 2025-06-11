@@ -15,11 +15,16 @@ document.addEventListener('DOMContentLoaded', function () {
 
   navLinks.forEach(link => {
     link.addEventListener('click', function (e) {
-      e.preventDefault();
-      navLinks.forEach(l => l.classList.remove('active'));
-      this.classList.add('active');
-      showSection(this.getAttribute('href'));
-      history.replaceState(null, '', this.getAttribute('href'));
+      const href = this.getAttribute('href');
+      // Only handle hash links for SPA navigation
+      if (href.startsWith('#')) {
+        e.preventDefault();
+        navLinks.forEach(l => l.classList.remove('active'));
+        this.classList.add('active');
+        showSection(href);
+        history.replaceState(null, '', href);
+      }
+      // For external links (like register.html), let the browser handle it
     });
   });
 

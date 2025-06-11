@@ -93,18 +93,34 @@ h4 {
 .nav-link.active::after, .nav-link:hover::after {
   content: '';
   display: block;
-  margin: 0 auto;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
   width: 60%;
   height: 2px;
   background: linear-gradient(90deg, #0acffe 0%, #495aff 100%);
   border-radius: 2px;
-  margin-top: 4px;
   opacity: 1;
+  transition: all 0.25s ease-in-out;
+}
+.nav-link::after {
+  content: '';
+  display: block;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%) translateY(3px);
+  width: 60%;
+  height: 2px;
+  background: linear-gradient(90deg, #0acffe 0%, #495aff 100%);
+  border-radius: 2px;
+  opacity: 0;
   transition: all 0.25s ease-in-out;
 }
 .nav-link:not(:hover)::after {
   opacity: 0;
-  transform: translateY(3px);
+  transform: translateX(-50%) translateY(3px);
 }
 
 /* Dropdown styles */
